@@ -1,0 +1,13 @@
+<div ng-if="paragraph.type == 'header'" class="header">
+	<p>{{paragraph.content}}</p>
+</div>
+<div ng-if="paragraph.type == 'text'" class="text" ng-class="{firstParagraph: first}">
+	<p>{{paragraph.content}}</p>
+</div>
+<div ng-if="paragraph.type == 'image'" class="image">
+	<p>
+		<!--TODO: store content as 'url' and remember to store caption and 'alt'-->
+		<img ng-src="{{paragraph.content}}" ng-alt="{{paragraph.alt}}"></img>
+		<p class="caption">{{paragraph.caption}}</p>
+	</p>
+</div>	

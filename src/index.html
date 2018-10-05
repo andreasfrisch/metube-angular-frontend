@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+	
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+	
+	<title>Metube (WIP)</title>
+	
+	<!-- Load styling -->
+	<link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="metube.style.css">
+	<link rel="stylesheet" type="text/css" href="authentication/authentication.style.css">
+	
+	<link rel="stylesheet" type="text/css" href="blog/menu.style.css">
+	<link rel="stylesheet" type="text/css" href="blog/view/view.style.css">
+	<link rel="stylesheet" type="text/css" href="blog/archive/archive.style.css">
+	<link rel="stylesheet" type="text/css" href="blog/edit/edit.style.css">
+
+	<link rel="stylesheet" type="text/css" href="gallery/gallery.style.css">
+	
+	<!-- Load logic -->
+	<!-- angular or third party scripts -->
+	<!-- bower:js -->
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+	<!--<script src="libs/angular-mocks/angular-mocks.js"></script>-->
+	<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="node_modules/ng-file-upload/dist/ng-file-upload.js"></script>
+	<!-- endbower -->
+
+	<!-- metube scripts -->
+	<script src="metube.module.js"></script>
+
+	<!-- authentication: -->
+	<script src="authentication/authentication.module.js"></script>
+	<script src="authentication/authenticationApi.service.js"></script>
+	<script src="authentication/authenticationStatus.service.js"></script>
+	<script src="authentication/authentication.controller.js"></script>
+		
+	<!-- common directives: -->
+	<script src="menu/menu.module.js"></script>
+	<script src="menu/menu.service.js"></script>
+	<script src="menu/menu.controller.js"></script>
+	
+    <!-- portal: -->
+    <script src="portal.controller.js"></script>
+    
+	<!-- blog: -->
+	<script src="blog/blog.module.js"></script>
+	<script src="blog/blogApi.provider.js"></script>
+	<!--<script src="blog/blogApi.service.js"></script>-->
+	<script src="blog/blogMenu.controller.js"></script>
+	<script src="blog/archive/archive.module.js"></script>
+	<script src="blog/archive/archive.controller.js"></script>
+	<script src="blog/newest/newest.module.js"></script>
+	<script src="blog/newest/newest.controller.js"></script>
+	<script src="blog/view/view.module.js"></script>
+	<script src="blog/view/view.controller.js"></script>
+	<script src="blog/view/paragraph.directive.js"></script>
+	<script src="blog/edit/edit.module.js"></script>
+	<script src="blog/edit/edit.service.js"></script>
+	<script src="blog/edit/edit.controller.js"></script>
+	<script src="blog/edit/paragraphsParserAndFormatter.directive.js"></script>
+	<script src="blog/edit/tagsParserAndFormatter.directive.js"></script>
+    
+    <!-- gallery: -->
+	<script src="gallery/gallery.module.js"></script>
+	<script src="gallery/galleryApi.provider.js"></script>
+	<script src="gallery/gallery.controller.js"></script>
+	<script src="gallery/image.directive.js"></script>
+
+</head>
+<body ng-app="metube" ng-controller="menu">
+	<!--
+	<div ng-if="!authenticationStatus.isAuthenticated">
+		<form name="loginForm" ng-submit="login(login.username, login.password)" novalidate>
+			<input type="text" ng-model="login.username" placeholder="username" required></input>
+			<br/>
+			<input type="password" ng-model="login.password" placeholder="password" required></input>
+			<br/>
+			<input type="submit" ng-disabled="loginForm.$invalid" value="Login"></input>
+		</form>
+	</div>
+
+	<div ng-if="authenticationStatus.isAuthenticated">
+		<button ng-click="logout()">Logout</button>
+	</div>
+	<hr />
+	-->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+    	<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" ui-sref="portal">Metube</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li ng-repeat="link in menuLinks" ng-class="{active: isActive(link.stateRoot || link.state)}" ng-show="{{link.visible}}">
+							<a ui-sref={{link.state}}>
+								{{link.title}} <span class="sr-only">(current)</span>
+							</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li ng-if="!authenticationStatus.isAuthenticated">
+						<a ui-sref="login">Login</a>
+					</li>
+					<li ng-if="authenticationStatus.isAuthenticated">
+						<a ng-click="logout()">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div ui-view>
+			<!-- being filled in by angular -->
+		</div>
+	</div>
+</body>
+</html>

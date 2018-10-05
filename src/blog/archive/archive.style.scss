@@ -1,0 +1,49 @@
+.blogArchive {
+	margin: auto;
+	margin-bottom: 20px;
+	background-color: #f8f8f8;
+	border: 1px solid #ccc;
+	padding: 25px;
+	.archiveContent {
+		.titleBar {
+			margin: 10px 0;
+			
+			.title {
+				font-size: 36px;
+			}
+			.searchContainer {
+				margin: 0;
+				float: right;
+				.searchBar {
+					vertical-align: top;
+					line-height: 30px;
+					font-size:14px;
+				}
+				.searchButton {
+					background-color: #ccc;
+					color: #fff;
+					width: 36px;
+					height: 36px;
+					line-height: 30px;
+					cursor: pointer;
+				}
+			}
+		}
+		hr {
+			margin: 10px 0;
+		}
+		a {
+			color: #000;
+		}
+		.post {
+			margin: 15px 0;
+			p {
+				margin: 0;
+				padding: 0;
+			}
+			.title {
+				font-size: 30px;
+			}
+		}
+	}
+}

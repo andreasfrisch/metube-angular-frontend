@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="col-3-sm col-4-lg">
+	</div>
+	<div class="col-6-sm col-4-lg">
+		<div class="blogCreateNavigationMenu">
+			<div class="leftAligned">
+				<button ng-click="goToPreview()">Preview</button>
+			</div>
+			<div class="centered">
+				<span>Edit Content</span>
+			</div>
+			<div class="rightAligned">
+				<button ng-click="goToLayout()">Layout</button>
+			</div>
+		</div>
+		<div class="blogCreateContent">
+			<form name="postDraftForm" novalidate>
+				<div class="row">
+					<input type="text" id="title" ng-model="draft.title" placeholder="Title"></input>
+				</div>
+				<div class="row">
+					<input type="text" id="author" ng-model="draft.author" placeholder="Author"></input>
+				</div>
+				<div class="row">
+					<input type="text" id="date" ng-model="draft.date" placeholder="The publishing date (e.g. YYYY-MM-DD)"></input>
+				</div>
+				<div class="row">
+					<input type="text" id="tags" ng-model="draft.tags" placeholder="Comma separated list of tags" tags-parser-and-formatter></input>
+				</div>
+				<div class="row">
+					<textarea ng-model="draft.paragraphs" placeholder="Content" paragraphs-parser-and-formatter></textarea>
+				</div>
+			</form>
+			<!--
+			<p>Tags in model: {{ draft.tags }}</p>
+			<p>Paragraphs in model: {{ draft.paragraphs }}</p>
+			-->
+		</div>
+		<div class="blogCreateNavigationMenu">
+			<div class="leftAligned">
+			</div>
+			<div class="centered">
+				<button ng-click="submitPost()">Submit</button>
+			</div>
+			<div class="rightAligned">
+			</div>
+		</div>
+	</div>
+	<div class="col-3-sm col-4-lg">
+	</div>
+</div>

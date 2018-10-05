@@ -1,0 +1,59 @@
+<div class="row">
+	<div class="col-3-sm col-4-lg">
+	</div>
+	<div class="col-6-sm col-4-lg">
+		<div class="blogCreateNavigationMenu">
+			<div class="leftAligned">
+				<button ng-click="goToLayout()">Layout</button>
+			</div>
+			<div class="centered">
+				<span>Draft preview</span>
+			</div>
+			<div class="rightAligned">
+				<button ng-click="goToContent()">Content</button>
+			</div>
+		</div>
+
+		<div class="blogCreatePreview">	
+			<div class="post">
+				<div class="title">
+					<div>
+						{{ draft.title }}
+					</div>
+				</div>
+				<hr />
+				<div class="metaData">
+					<span class="postedDate">
+						{{ draft.postedDate | date:'EEE d MMMM yyyy' }}
+					</span>
+					<div class="author">
+						<span class="ghost">By</span>
+						{{ draft.author }}
+					</div>
+					<div class="tags">
+						<span class="ghost">In</span>
+						<span ng-repeat="tag in draft.tags">
+							<span class="tag" >{{ tag }}</span>
+							<span>{{$last ? '' : ', '}}</span>
+						</span>
+					</div>
+				</div>
+				<hr />
+				<div class="content">
+					<blog-paragraph paragraph="paragraph" first="$first" ng-repeat="paragraph in draft.paragraphs">
+					</blog-paragraph>
+				</div>
+			</div>
+		</div>
+		<div class="blogCreateNavigationMenu">
+			<div class="leftAligned">
+			</div>
+			<div class="centered">
+				<button ng-click="submitPost()">Submit</button>
+			</div>
+			<div class="rightAligned">
+			</div>
+		</div>
+	<div class="col-3-sm col-4-lg">
+	</div>
+</div>

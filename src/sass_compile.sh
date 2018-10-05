@@ -1,0 +1,9 @@
+sass _colors.scss _colors.css
+sass gallery/gallery.style.scss gallery/gallery.style.css
+sass blog/archive/archive.style.scss gallery/gallery.style.css
+sass blog/edit/edit.style.scss blog/edit/edit.style.css
+sass blog/menu.style.scss blog/menu.style.css
+sass blog/view/view.style.scss blog/view/view.style.css
+sass blog/create/create.style.scss blog/create/create.style.css
+sass authentication/authentication.style.scss authentication/authentication.style.css
+sass metube.style.scss metube.style.css

@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="col-3-sm col-4-lg">
+	</div>
+	<div class="col-6-sm col-4-lg">
+        {{ post }}
+		<div class="blogView">
+			<div class="post">
+				<div class="title">
+					<div>
+						{{ post.title }}
+                        <a ui-sref="blog.edit.content({id: post.id})">edit</a>
+					</div>
+				</div>
+				<hr />
+				<div class="metaData">
+					<span class="postedDate">
+						{{ post.postedDate | date:'EEE d MMMM yyyy' }}
+					</span>
+					<div class="author">
+						<span class="ghost">By</span>
+						{{ post.author }}
+					</div>
+					<!-- HACK:
+						 markup is repeated twice to allow different layouts based on screen size
+						 TODO: fix
+					-->
+					<div class="tags float-right hidden-xs">
+						<span class="ghost">In</span>
+						<span ng-repeat="tag in post.tags">
+							<a ui-sref="blog.archive({tags: tag})">{{tag}}</a>{{$last ? '' : ', '}}
+						</span>
+					</div>
+					<div class="tags hidden-sm hidden-md hidden-lg">
+						<span class="ghost">In</span>
+						<span ng-repeat="tag in post.tags">
+							<a ui-sref="blog.archive({tags: tag})">{{tag}}</a>{{$last ? '' : ', '}}
+						</span>
+					</div>
+					<!-- /HACK -->
+				</div>
+				<hr />
+				<div class="content">
+					<blog-paragraph paragraph="paragraph" first="$first" ng-repeat="paragraph in post.paragraphs">
+					</blog-paragraph>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-3-sm col-4-lg">
+	</div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="col-3-sm col-4-lg">
+	</div>
+	<div class="col-6-sm col-4-lg">
+		<div class="blogCreateNavigationMenu">
+			<div class="leftAligned">
+				<button ng-click="goToContent()">Content</button>
+			</div>
+			<div class="centered">
+				<span>Edit Paragraph Styles</span>
+			</div>
+			<div class="rightAligned">
+				<button ng-click="goToPreview()">Preview</button>
+			</div>
+		</div>
+		<div class="blogCreateLayout">
+			<!--
+			WIP -- {{ paragraphTypes }}
+			<br />
+			Draft -- {{ draft }}
+			<br />
+			-->
+			<div ng-repeat="paragraph in draft.paragraphs">
+				<div class="paragraph">
+					<select ng-options="type for type in paragraphTypes" ng-model="paragraph.type" ng-init="paragraph.type"></select>
+					<p>{{ paragraph.content }}</p>
+				</div>
+				<hr class="divider" ng-hide="$last"/>
+			</div>
+		</div>
+		<div class="blogCreateNavigationMenu">
+			<div class="leftAligned">
+			</div>
+			<div class="centered">
+				<button ng-click="submitPost()">Submit</button>
+			</div>
+			<div class="rightAligned">
+			</div>
+		</div>
+	<div class="col-3-sm col-4-lg">
+	</div>
+</div>

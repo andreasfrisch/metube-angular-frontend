@@ -1,0 +1,14 @@
+@import 'colors';
+
+body {
+	background-color: #eee;
+}
+
+a:hover, a:active, a:visited, a:link {
+	text-decoration: none;
+	color: $link-color;
+}
+
+.ghost {
+	color: $ghost-color;
+}
