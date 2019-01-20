@@ -1,9 +1,10 @@
 version: '3'
 
 services:
-  frontend:
+  page:
     build: .
-    # restart: always
-    # image: nginx:latest
+    command: yarn start
+    volumes:
+      - .:/usr/src/app
     ports:
-      - "8000:8000"
+      - 8080:8080

@@ -47,8 +47,8 @@ angular.module('metube', [
         function($stateProvider, $urlRouterProvider, $httpProvider, blogApiProvider, galleryApiProvider) {
     
     //set blogEndpoint
-    blogApiProvider.setBackendEndpoint('www.metube.dk/api/blog/posts/');
-    galleryApiProvider.setBackendEndpoint('www.metube.dk/api/gallery/images/');
+    blogApiProvider.setBackendEndpoint('https://www.metube.dk/api/blog/posts/');
+    galleryApiProvider.setBackendEndpoint('https://www.metube.dk/api/gallery/images/');
     
     //CSRF protection
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
