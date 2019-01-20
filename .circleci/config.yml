@@ -50,7 +50,7 @@ jobs:
     - run:
         name: Deploying to production
         command: |
-          ~/.local/bin/aws s3 sync app/ s3://metube.dk/ --region eu-central-1
+          ~/.local/bin/aws s3 sync src/ s3://metube.dk/ --region eu-central-1
 
 workflows:
   version: 2
