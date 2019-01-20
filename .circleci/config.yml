@@ -1,0 +1,60 @@
+default: &default
+  docker:
+    - image: circleci/python:3.7.0-node
+  working_directory: ~/repo
+
+master_only: &master-only
+  filters:
+    branches:
+      only:
+      - master
+
+aliases:
+  - &restore_cache
+    restore_cache:
+      keys:
+      - v1-dependencies-{{ checksum "package.json" }}
+      # fallback to using the latest cache if no exact match is found
+      - v1-dependencies-
+  - &install_dependencies
+    run:
+      name: install dependencies
+      command: yarn
+  - &save_cache
+    save_cache:
+      paths:
+      - node_modules
+      key: v1-dependencies-{{ checksum "package.json" }}
+
+version: 2
+jobs:
+  test:
+    <<: *default
+    steps:
+    - checkout
+    - *restore_cache
+    - *install_dependencies
+    - *save_cache
+    - run:
+        name: Running tests
+        command: yarn test
+
+  deploy-production:
+    <<: *default
+    steps:
+    - checkout
+    - *restore_cache
+    - *install_dependencies
+    - *save_cache
+    - run: pip install awscli --user
+    - run:
+        name: Deploying to production
+        command: |
+          ~/.local/bin/aws s3 sync app/ s3://metube.dk/ --region eu-central-1
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+    - deploy-production:
+        <<: *master-only
