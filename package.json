@@ -4,10 +4,10 @@
   "description": "Frontend for the Metube project",
   "main": "metube.module.js",
   "dependencies": {
-    "angular": "1.4.8",
+    "angular": "1.6.0",
     "angular-ui-router": "0.4.2",
     "bootstrap": "^3.3.6",
-    "jquery": "3.3.1",
+    "jquery": "3.4.0",
     "ng-file-upload": "^10.1.9",
     "sass": "1.14.1",
     "angular-lint": "0.0.2",
